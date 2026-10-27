@@ -117,21 +117,8 @@ if(interactiveStates.length&&statePanelCode&&statePanelName&&stateCompanies){
   renderState(selectedState,true);
 }
 
-// Movimento discreto, com pausa e respeito à preferência do visitante.
-const animationButton=document.querySelector('.hero-video-toggle');
-const ecosystem=document.querySelector('.hero-ecosystem');
-let animationPaused=false;
-function syncAnimation(){
-  const reduced=prefersReduced.matches;
-  ecosystem.classList.toggle('is-paused',animationPaused||reduced);
-  animationButton.hidden=reduced;
-  animationButton.textContent=animationPaused?'Reproduzir animação':'Pausar animação';
-  animationButton.setAttribute('aria-label',animationButton.textContent+' das logomarcas');
-  animationButton.setAttribute('aria-pressed',String(animationPaused));
-}
-animationButton.addEventListener('click',()=>{animationPaused=!animationPaused;syncAnimation()});
-prefersReduced.addEventListener('change',syncAnimation);
-syncAnimation();
+// A animação de abertura termina automaticamente em 1 segundo via CSS.
+// A preferência por movimento reduzido é respeitada pelas media queries.
 
 // Mantém âncoras e seções fixas alinhadas à altura real do menu aberto.
 const visibleHeader=document.querySelector('.site-header');
