@@ -132,3 +132,9 @@ function syncAnimation(){
 animationButton.addEventListener('click',()=>{animationPaused=!animationPaused;syncAnimation()});
 prefersReduced.addEventListener('change',syncAnimation);
 syncAnimation();
+
+// Mantém âncoras e seções fixas alinhadas à altura real do menu aberto.
+const visibleHeader=document.querySelector('.site-header');
+const syncHeaderHeight=()=>document.documentElement.style.setProperty('--header-height',visibleHeader.offsetHeight+'px');
+new ResizeObserver(syncHeaderHeight).observe(visibleHeader);
+syncHeaderHeight();
