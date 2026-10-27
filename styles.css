@@ -260,3 +260,19 @@ body{zoom:.75}
  .brand-trial .trial-logo{max-width:200px;padding:14px}
 }
 @media(prefers-reduced-motion:reduce){.ecosystem-orbit,.ecosystem-logo{animation:none}.brands-sticky{top:auto;height:auto}}
+
+/* Navegação sempre visível, também em telas pequenas. */
+.site-header nav{display:flex;flex-wrap:wrap;justify-content:center}
+.site-header .menu-toggle,.site-header .mobile-menu{display:none!important}
+html{scroll-padding-top:var(--header-height,92px)}
+@media(max-width:980px){
+ .site-header{height:auto;min-height:92px;padding:16px 4.5vw;flex-direction:column;gap:10px}
+ .site-header nav{width:100%;gap:8px 26px;font-size:16px}
+ .site-header nav>a:not(.nav-outline){padding:12px 4px}
+}
+@media(max-width:700px){
+ .site-header{padding:14px 6vw;gap:8px}
+ .site-header nav{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;text-align:center;font-size:17px}
+ .site-header nav>a:not(.nav-outline){display:flex;align-items:center;justify-content:center;min-height:60px;padding:8px 0}
+}
+@media(min-width:701px){.brands-sticky{top:var(--header-height,92px);height:calc(100vh - var(--header-height,92px))}}
