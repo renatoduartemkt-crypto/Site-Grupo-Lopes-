@@ -243,13 +243,13 @@ body{zoom:.75}
 .brand-trial .trial-logo{filter:none;background:#fff;padding:16px;box-sizing:content-box;border-radius:4px}
 .hero-top>.hero-ecosystem{position:absolute;z-index:0;right:3%;top:50%;width:46%;max-width:680px;aspect-ratio:1;transform:translateY(-50%)}
 .ecosystem-center{position:absolute;width:38%;left:31%;top:44%}
-.ecosystem-orbit{position:absolute;inset:0;animation:orbit-sway 16s ease-in-out infinite alternate}
+.ecosystem-orbit{position:absolute;inset:0;animation:orbit-sway 1s ease-in-out 1 forwards}
 .ecosystem-slot{position:absolute;width:24%;height:24%}
-.ecosystem-logo{width:100%;height:100%;border-radius:50%;background:#fff;box-shadow:0 10px 24px #1b2d491c;display:grid;place-items:center;padding:16%;animation:logo-counter 16s ease-in-out infinite alternate}
+.ecosystem-logo{width:100%;height:100%;border-radius:50%;background:#fff;box-shadow:0 10px 24px #1b2d491c;display:grid;place-items:center;padding:16%;animation:logo-counter 1s ease-in-out 1 forwards}
 .ecosystem-logo img{width:100%;height:100%;object-fit:contain}
 .slot-0{left:38%;top:0}.slot-1{left:71%;top:19%}.slot-2{left:71%;top:57%}.slot-3{left:38%;top:76%}.slot-4{left:5%;top:57%}.slot-5{left:5%;top:19%}
-@keyframes orbit-sway{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
-@keyframes logo-counter{from{transform:rotate(6deg)}to{transform:rotate(-6deg)}}
+@keyframes orbit-sway{from{transform:rotate(-18deg)}to{transform:rotate(0deg)}}
+@keyframes logo-counter{from{transform:rotate(18deg)}to{transform:rotate(0deg)}}
 .is-paused .ecosystem-orbit,.is-paused .ecosystem-logo{animation-play-state:paused}
 @media(max-width:700px){
  .hero-top>.hero-ecosystem{position:relative;top:auto;right:auto;width:76%;max-width:320px;transform:none;align-self:center;margin:24px 0;order:2;z-index:2}
