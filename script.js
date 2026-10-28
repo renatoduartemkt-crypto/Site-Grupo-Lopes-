@@ -11,11 +11,30 @@ const brandMeter=document.querySelector('.brand-meter span');
 let ticking=false;
 function clamp(n,min=0,max=1){return Math.min(max,Math.max(min,n))}
 function pageZoom(){const value=parseFloat(getComputedStyle(document.body).zoom);return Number.isFinite(value)&&value>0?value:1}
-function sectionProgress(section){const rect=section.getBoundingClientRect();const range=rect.height-innerHeight;return range>0?clamp(-rect.top/range):0}
+function sectionProgress(section){
+ const rect=section.getBoundingClientRect();
+ const zoom=pageZoom();
+ const headerBottom=header.getBoundingClientRect().bottom;
+ const border=parseFloat(getComputedStyle(section).borderTopWidth)*zoom;
+ const pinnedHeight=section.querySelector('.brands-sticky').getBoundingClientRect().height;
+ const range=section.clientHeight*zoom-pinnedHeight;
+ return range>0?clamp((headerBottom-rect.top-border)/range):0;
+}
 function updateMotion(){
   ticking=false;
-  if(prefersReduced.matches||innerWidth<=700)return;
-  if(brands&&slides.length){const p=sectionProgress(brands);const position=p*(slides.length-1);slides.forEach((slide,index)=>{const y=clamp(index-position,0,1)*100;slide.style.transform=`translate3d(0,${y}%,0)`});const active=Math.min(slides.length-1,Math.round(position));brandCurrent.textContent=String(active+1).padStart(2,'0');brandMeter.style.width=`${p*100}%`}
+  if(!brands||!slides.length)return;
+  const flow=prefersReduced.matches||innerWidth<=700||brands.classList.contains('brands-flow');
+  const p=flow?0:sectionProgress(brands);
+  const active=Math.min(slides.length-1,Math.floor(p*slides.length));
+  slides.forEach((slide,index)=>{
+    slide.style.removeProperty('transform');
+    slide.classList.toggle('is-active',flow||index===active);
+    slide.inert=!flow&&index!==active;
+    if(flow||index===active)slide.removeAttribute('aria-hidden');
+    else slide.setAttribute('aria-hidden','true');
+  });
+  brandCurrent.textContent=String(active+1).padStart(2,'0');
+  brandMeter.style.width=`${p*100}%`;
 }
 function requestUpdate(){if(!ticking){requestAnimationFrame(updateMotion);ticking=true}}
 addEventListener('scroll',requestUpdate,{passive:true});addEventListener('resize',requestUpdate);prefersReduced.addEventListener?.('change',requestUpdate);requestUpdate();
@@ -122,6 +141,15 @@ if(interactiveStates.length&&statePanelCode&&statePanelName&&stateCompanies){
 
 // Mantém âncoras e seções fixas alinhadas à altura real do menu aberto.
 const visibleHeader=document.querySelector('.site-header');
-const syncHeaderHeight=()=>document.documentElement.style.setProperty('--header-height',visibleHeader.offsetHeight+'px');
+const syncHeaderHeight=()=>{
+ const height=visibleHeader.offsetHeight;
+ document.documentElement.style.setProperty('--header-height',height+'px');
+ const available=innerHeight/pageZoom()-height;
+ document.documentElement.style.setProperty('--brand-height',available+'px');
+ brands.classList.toggle('brands-flow',innerWidth<=700||prefersReduced.matches||available<720);
+ requestUpdate();
+};
+addEventListener('resize',syncHeaderHeight);
+prefersReduced.addEventListener('change',syncHeaderHeight);
 new ResizeObserver(syncHeaderHeight).observe(visibleHeader);
 syncHeaderHeight();
