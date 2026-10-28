@@ -280,3 +280,30 @@ html{scroll-padding-top:var(--header-height,108px)}
  .site-header nav>a:not(.nav-outline){display:flex;align-items:center;justify-content:flex-end;min-height:50px;padding:6px 0;white-space:nowrap}
 }
 @media(min-width:701px){.brands-sticky{top:var(--header-height,108px);height:calc(100vh - var(--header-height,108px))}}
+
+/* O carrossel ocupa a área útil abaixo do cabeçalho, considerando o zoom do site. */
+@media(min-width:701px) and (prefers-reduced-motion:no-preference){
+ .brands-sticky{top:var(--header-height,108px);height:var(--brand-height,900px)}
+ .brand-slides{height:100%}
+ .brand-slide{height:100%;min-height:0;transform:none!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease}
+ .brand-slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
+ .brand-media{height:100%;min-height:0}
+ .brand-content{min-height:0;padding:76px 5vw 42px}
+ .brand-kicker{margin-bottom:18px}
+ .brand-content .child-logo{margin-bottom:22px;flex-shrink:0}
+ .brand-content h3{margin-bottom:18px}
+ .brand-content .visit-link{margin-top:24px}
+ .brands-ui{color:#fff;text-shadow:0 1px 4px #0008}
+ .brands-ui .section-label,.brands-ui .brand-count{background:#1b2d49dd;padding:6px 10px;border-radius:3px}
+ .brands-ui .brand-count{align-items:center}
+}
+.brands.brands-flow{height:auto}
+.brands-flow .brands-sticky{position:relative;top:auto;height:auto;overflow:visible;padding:60px 0 0}
+.brands-flow .brands-ui{position:relative;top:auto;left:auto;right:auto;padding:0 5vw 24px}
+.brands-flow .brand-count,.brands-flow .brand-meter{display:none}
+.brands-flow .brand-slides{position:relative;height:auto}
+.brands-flow .brand-slide{position:relative;inset:auto;height:auto;min-height:0;transform:none!important;opacity:1;visibility:visible;pointer-events:auto}
+.brands-flow .brand-content{min-height:0}
+.brands-flow .brand-media{height:auto;min-height:380px}
+.brands-flow .brand-media img{position:absolute;inset:0}
+@media(max-width:700px){.brands-flow .brand-media{height:380px}}
