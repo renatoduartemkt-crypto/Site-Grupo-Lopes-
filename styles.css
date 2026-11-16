@@ -371,3 +371,10 @@ html{scroll-padding-top:var(--header-height,108px)}
 /* Laranja suave na faixa da primeira tela (opção B). */
 .hg-bar{background:#f37a52}
 @media(max-width:700px){.hg-bar{background:#f37a52}}
+/* Mesmo laranja suave no restante da primeira tela. */
+.hg h1 span{color:#f37a52}
+.hg-btn{background:#f37a52}
+.hg-btn:hover{background:#26282b}
+.hg-eyebrow{border-left-color:#f37a52}
+.hg-link{border-bottom-color:#f37a52}
+.hg-link:hover{color:#f37a52}
