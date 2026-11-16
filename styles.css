@@ -378,3 +378,6 @@ html{scroll-padding-top:var(--header-height,108px)}
 .hg-eyebrow{border-left-color:#f37a52}
 .hg-link{border-bottom-color:#f37a52}
 .hg-link:hover{color:#f37a52}
+/* Primeira tela: resumo direto no lugar do slogan. */
+.hg h1{font-size:clamp(36px,3.3vw,58px);line-height:1.15;font-weight:400;letter-spacing:-.03em;max-width:900px}
+@media(max-width:700px){.hg h1{font-size:clamp(28px,7.5vw,40px)}}
