@@ -351,3 +351,19 @@ html{scroll-padding-top:var(--header-height,108px)}
  .hg-brands{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:10px}
  .hg-brands li{width:auto;height:58px}
 }
+
+/* Primeira tela da Home em branco e laranja (só .hg; o resto do site mantém as cores originais). */
+.hg{background:#fff;color:#26282b}
+.hg-media::after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.6) 26%,rgba(255,255,255,0) 55%)}
+.hg-eyebrow{color:#26282b}
+.hg-lead{color:#55585c}
+.hg-link{color:#26282b}
+.hg-link:hover{color:var(--orange)}
+.hg-btn:hover{background:#26282b}
+.hg-bar{background:var(--orange);border-top:0}
+.hg-stats strong,.hg-stats span{color:#fff}
+.hg-brands li{box-shadow:0 6px 16px rgba(120,30,10,.18)}
+@media(max-width:700px){
+ .hg-media::after{background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,0) 50%)}
+ .hg-bar{background:var(--orange)}
+}
