@@ -307,3 +307,47 @@ html{scroll-padding-top:var(--header-height,108px)}
 .brands-flow .brand-media{height:auto;min-height:380px}
 .brands-flow .brand-media img{position:absolute;inset:0}
 @media(max-width:700px){.brands-flow .brand-media{height:380px}}
+
+/* Home com a cara do Grupo Lopes: foto real, azul da marca, números e empresas logo na primeira tela. */
+.hg{position:relative;isolation:isolate;overflow:hidden;background:var(--blue);color:#fff;min-height:calc(133.333vh - var(--header-height,108px));display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:1fr auto}
+.hg-media{grid-column:2;grid-row:1/3;position:relative;z-index:-1}
+.hg-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
+.hg-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--blue) 0%,rgba(27,45,73,.55) 28%,rgba(27,45,73,0) 60%),linear-gradient(0deg,rgba(27,45,73,.85) 0%,rgba(27,45,73,0) 38%)}
+.hg-content{grid-column:1;grid-row:1;align-self:center;padding:72px 2vw 48px 4.5vw;max-width:900px}
+.hg-eyebrow{display:inline-block;font-size:14px;letter-spacing:.14em;font-weight:700;color:#fff;padding-left:18px;border-left:5px solid var(--orange);margin-bottom:34px}
+.hg h1{margin:0;font-size:clamp(54px,5.6vw,96px);line-height:1;font-weight:300;letter-spacing:-.05em}
+.hg h1 span{display:block;color:var(--orange);font-weight:400}
+.hg-lead{max-width:640px;margin:34px 0 0;font-size:21px;line-height:1.5;color:#d8deea}
+.hg-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 34px;margin-top:44px}
+.hg-btn{display:inline-flex;align-items:center;gap:18px;background:var(--orange);color:#fff;font-weight:700;font-size:18px;padding:20px 28px;border-radius:2px;text-decoration:none;transition:background .2s}
+.hg-btn:hover{background:var(--orange2)}
+.hg-link{color:#fff;font-size:18px;text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:4px}
+.hg-link:hover{color:var(--orange)}
+.hg-bar{grid-column:1/3;grid-row:2;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:28px 4.5vw 34px;border-top:1px solid #ffffff26;background:linear-gradient(90deg,var(--blue) 0%,rgba(27,45,73,.92) 55%,rgba(27,45,73,.7) 100%)}
+.hg-stats,.hg-brands{list-style:none;margin:0;padding:0;display:flex}
+.hg-stats{gap:48px}
+.hg-stats li{display:flex;align-items:baseline;gap:10px}
+.hg-stats strong{font-size:44px;font-weight:700;color:var(--orange);letter-spacing:-.03em;line-height:1}
+.hg-stats span{font-size:16px;color:#d8deea;max-width:120px;line-height:1.25}
+.hg-brands{gap:12px}
+.hg-brands li{width:108px;height:62px;background:#fff;border-radius:6px;display:grid;place-items:center;padding:10px 14px;box-sizing:border-box}
+.hg-brands img{max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:1250px){.hg-bar{flex-direction:column;align-items:flex-start}.hg-brands{flex-wrap:wrap}}
+@media(max-width:700px){
+ .hg{display:flex;flex-direction:column;min-height:0}
+ .hg-media{height:300px;z-index:0}
+ .hg-media::after{background:linear-gradient(0deg,var(--blue) 0%,rgba(27,45,73,0) 55%)}
+ .hg-content{padding:8px 6vw 36px}
+ .hg-eyebrow{font-size:11px;margin-bottom:22px}
+ .hg h1{font-size:clamp(40px,11vw,62px)}
+ .hg-lead{font-size:17px;margin-top:22px}
+ .hg-actions{margin-top:30px}
+ .hg-btn{font-size:16px;padding:17px 22px}
+ .hg-bar{padding:24px 6vw 30px;gap:24px;background:#152439}
+ .hg-stats{width:100%;justify-content:space-between;gap:12px}
+ .hg-stats li{flex-direction:column;gap:4px}
+ .hg-stats strong{font-size:36px}
+ .hg-stats span{font-size:13px}
+ .hg-brands{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:10px}
+ .hg-brands li{width:auto;height:58px}
+}
